@@ -29,7 +29,27 @@ function Ball() {
 
   useFrame(() => {
     if (ref.current) {
-      ref.current.position.lerp(targetPosition, 0.08);
+      ref.current.position.lerp(targetPosition, 0.07);
+      if (Math.abs(ref.current.position.x) > viewport.width / 2 - 0.025) {
+        setTargetPosition(
+          new THREE.Vector3(
+            Math.sign(ref.current.position.x) * (viewport.width * 0.4),
+            ref.current.position.y,
+            0
+          )
+        );
+        ref.current.position.lerp(targetPosition, 0.03);
+      }
+      if (Math.abs(ref.current.position.y) > viewport.height / 2 - 0.025) {
+        setTargetPosition(
+          new THREE.Vector3(
+            ref.current.position.x,
+            Math.sign(ref.current.position.y) * (viewport.height * 0.3),
+            0
+          )
+        );
+        ref.current.position.lerp(targetPosition, 0.03);
+      }
     }
   });
 
