@@ -3,12 +3,12 @@ import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
 function Ball() {
-  const ref = useRef();
+  const ref = useRef<THREE.Mesh>(null);
   const { viewport } = useThree();
   const [targetPosition, setTargetPosition] = useState(new THREE.Vector3());
 
   useEffect(() => {
-    const handleMouseMove = (event) => {
+    const handleMouseMove = (event: { clientX: number; clientY: number }) => {
       const x = (event.clientX / window.innerWidth) * 2 - 1;
       const y = -(event.clientY / window.innerHeight) * 2 + 1;
       setTargetPosition(

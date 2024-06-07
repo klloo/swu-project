@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber';
-import Background from './Backgroud';
 import Ball from './Ball';
+import Background from './Backgroud';
 
 function Home() {
   return (

@@ -114,32 +114,32 @@ const WaveShaderMaterial = shaderMaterial(
     }
     `
 );
+
 extend({ WaveShaderMaterial });
 
 function Background() {
-  const ref = useRef<THREE.ShaderMaterial>(null);
-  const { viewport, mouse } = useThree();
+  const meshRef = useRef<THREE.Mesh>(null);
+  const { viewport, pointer } = useThree();
   const mouseRef = useRef(new THREE.Vector2(0.5, 0.5));
 
   useFrame(() => {
-    if (ref.current) {
-      // 마우스 위치를 부드럽게 보간
+    if (meshRef.current) {
+      const material = meshRef.current.material as THREE.ShaderMaterial;
       mouseRef.current.lerp(
-        new THREE.Vector2(mouse.x * 0.7 + 0.7, mouse.y * 0.7 + 0.7),
+        new THREE.Vector2(pointer.x * 0.7 + 0.7, pointer.y * 0.7 + 0.7),
         0.05
       );
-      ref.current.uniforms.uMouse.value.copy(mouseRef.current);
+      material.uniforms.uMouse.value.copy(mouseRef.current);
     }
   });
 
   const [image] = useLoader(THREE.TextureLoader, ['/images/home-bg.jpg']);
 
   return (
-    <mesh>
+    <mesh ref={meshRef}>
       <planeGeometry args={[viewport.width, viewport.height, 50, 50]} />
-      <waveShaderMaterial side={THREE.DoubleSide} ref={ref} uTexture={image} />
+      <waveShaderMaterial side={THREE.DoubleSide} uTexture={image} />
     </mesh>
   );
 }
-
 export default Background;
