@@ -1,21 +1,22 @@
 import { Canvas } from '@react-three/fiber';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import Background from '../components/Backgroud';
 import Ball from '../components/Ball';
 
 function Layout() {
+  const location = useLocation();
   const menuList = [
     {
       label: 'ABOUT',
-      link: '/',
+      link: '/about',
     },
     {
       label: 'PROJECT',
-      link: '/',
+      link: '/project',
     },
     {
       label: 'DESIGNER',
-      link: '/',
+      link: '/designer',
     },
   ];
   return (
@@ -23,11 +24,18 @@ function Layout() {
       <div>
         <header className="w-full flex justify-between sticky top-0 z-10 pt-5 px-10">
           <Link to="/">아름다운 형태의 관찰</Link>
-          {menuList.map((menu) => (
-            <Link to={menu.link} className="text-2xl font-light">
-              {menu.label}
-            </Link>
-          ))}
+          {menuList.map((menu) => {
+            const isActive = location.pathname === menu.link;
+            return (
+              <Link
+                key={menu.link}
+                to={menu.link}
+                className={`text-2xl font-light ${isActive ? 'underline' : ''}`}
+              >
+                {menu.label}
+              </Link>
+            );
+          })}
         </header>
         <div className="relative z-10">
           <Outlet />
