@@ -82,7 +82,7 @@ function About() {
           <p>지도교수</p>
           <div className="mt-5">
             {professorList.map((item) => (
-              <div className="flex gap-1 mb-2">
+              <div className="flex gap-1 mb-2" key={item.subject}>
                 <p className="w-[130px]">{item.subject}</p>
                 <p>{item.name}</p>
               </div>
@@ -93,7 +93,7 @@ function About() {
           <p>졸업전시준비위원회</p>
           <div className="mt-5">
             {committeeList.map((item) => (
-              <div className="flex gap-1 mb-2">
+              <div className="flex gap-1 mb-2" key={item.role}>
                 <p className="w-[130px]">{item.role}</p>
                 <p>{item.name}</p>
               </div>
