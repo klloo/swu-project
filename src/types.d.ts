@@ -15,3 +15,9 @@ declare global {
     }
   }
 }
+
+interface DesignerType {
+  name: string;
+  email: string;
+  instagram: string;
+}
