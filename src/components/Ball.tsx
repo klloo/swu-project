@@ -1,11 +1,13 @@
 import { useRef, useState, useEffect } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
+import { TextureLoader } from 'three';
 import * as THREE from 'three';
 
 function Ball() {
   const ref = useRef<THREE.Mesh>(null);
   const { viewport } = useThree();
   const [targetPosition, setTargetPosition] = useState(new THREE.Vector3());
+  const texture = new TextureLoader().load('/vite.svg');
 
   useEffect(() => {
     const handleMouseMove = (event: { clientX: number; clientY: number }) => {
@@ -55,8 +57,9 @@ function Ball() {
 
   return (
     <mesh ref={ref}>
+      {/* <planeGeometry args={[0.03, 0.03]} /> */}
       <sphereGeometry args={[0.03, 16, 16]} />
-      <meshBasicMaterial color="white" />
+      <meshBasicMaterial map={texture} />
     </mesh>
   );
 }
