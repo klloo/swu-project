@@ -48,10 +48,11 @@ function Layout() {
             );
           })}
         </header>
-        <div className="relative z-10 mt-[100px] px-7 pb-28">
+        <div className="relative z-10 mt-[100px] px-7 pb-32">
           <Outlet />
         </div>
       </div>
+      <Ball />
       <Canvas
         camera={{ fov: 15, position: [0, 0, 5] }}
         style={{
@@ -63,7 +64,6 @@ function Layout() {
         }}
       >
         {/* <Background /> */}
-        <Ball />
       </Canvas>
     </>
   );

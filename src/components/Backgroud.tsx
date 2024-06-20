@@ -1,6 +1,6 @@
 import { shaderMaterial } from '@react-three/drei';
 import { extend, useFrame, useLoader, useThree } from '@react-three/fiber';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 const WaveShaderMaterial = shaderMaterial(
@@ -116,20 +116,32 @@ const WaveShaderMaterial = shaderMaterial(
 );
 
 extend({ WaveShaderMaterial });
-
 function Background() {
   const meshRef = useRef<THREE.Mesh>(null);
-  const { viewport, pointer } = useThree();
-  const mouseRef = useRef(new THREE.Vector2(0.5, 0.5));
+  const { viewport } = useThree();
+  const [mouse, setMouse] = useState(new THREE.Vector2(0.5, 0.5));
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      setMouse(
+        new THREE.Vector2(
+          (event.clientX / window.innerWidth) * 2 - 1,
+          -(event.clientY / window.innerHeight) * 2 + 1
+        )
+      );
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
   useFrame(() => {
     if (meshRef.current) {
       const material = meshRef.current.material as THREE.ShaderMaterial;
-      mouseRef.current.lerp(
-        new THREE.Vector2(pointer.x * 0.7 + 0.7, pointer.y * 0.7 + 0.7),
-        0.05
-      );
-      material.uniforms.uMouse.value.copy(mouseRef.current);
+      material.uniforms.uMouse.value.lerp(mouse, 0.05);
     }
   });
 
