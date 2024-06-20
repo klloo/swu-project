@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import Background from '../components/Backgroud';
+// import Background from '../components/Backgroud';
 import Ball from '../components/Ball';
 
 function Layout() {
@@ -21,23 +21,34 @@ function Layout() {
   ];
   return (
     <>
-      <div>
-        <header className="w-full flex justify-between sticky top-0 z-10 pt-5 px-10">
-          <Link to="/">아름다운 형태의 관찰</Link>
+      <div className="h-[100vh] overflow-auto">
+        <header className="w-full flex justify-between sticky top-0 z-20 pt-5 px-10">
+          <Link to="/">
+            <div className="flex font-bold">
+              <div className="text-xs">(1)</div>
+              <div className="text-2xl mt-[-1px]">아름다운</div>
+              <div className="text-xs ml-1">(2)</div>
+              <div className="text-2xl mt-[-1px]">형태의</div>
+              <div className="text-xs ml-1">(3)</div>
+              <div className="text-2xl mt-[-1px]">관찰</div>
+            </div>
+          </Link>
           {menuList.map((menu) => {
             const isActive = location.pathname === menu.link;
             return (
               <Link
                 key={menu.link}
                 to={menu.link}
-                className={`text-2xl font-light ${isActive ? 'underline' : ''}`}
+                className={`text-2xl font-normal ${
+                  isActive ? 'border-b-[1.5px] border-black' : ''
+                }`}
               >
                 {menu.label}
               </Link>
             );
           })}
         </header>
-        <div className="relative z-10">
+        <div className="relative z-10 mt-[100px] px-7 pb-28">
           <Outlet />
         </div>
       </div>
@@ -48,9 +59,10 @@ function Layout() {
           height: '100vh',
           position: 'absolute',
           top: 0,
+          background: '#BABCBE',
         }}
       >
-        <Background />
+        {/* <Background /> */}
         <Ball />
       </Canvas>
     </>
