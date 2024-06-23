@@ -1,5 +1,5 @@
 import { ko, Faker } from '@faker-js/faker';
-import { DesignerType } from '../types';
+import type { DesignerType } from '../types';
 
 const faker = new Faker({ locale: ko });
 

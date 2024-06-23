@@ -34,7 +34,7 @@ function Layout() {
             </div>
           </Link>
           {menuList.map((menu) => {
-            const isActive = location.pathname === menu.link;
+            const isActive = location.pathname.includes(menu.link);
             return (
               <Link
                 key={menu.link}

@@ -3,11 +3,12 @@ import {
   createRoutesFromElements,
   Route,
 } from 'react-router-dom';
-import Home from './views/Home';
 import Layout from './layouts/Layout';
+import ProjectList from './views/Project/list';
+import ProjectDetail from './views/Project/detail';
+import Home from './views/Home';
 import About from './views/About';
 import Designer from './views/Designer';
-import Project from './views/Proejct';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -15,7 +16,8 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/designer" element={<Designer />} />
-      <Route path="/project" element={<Project />} />
+      <Route path="/project" element={<ProjectList />} />
+      <Route path="/project/:id" element={<ProjectDetail />} />
     </Route>
   )
 );

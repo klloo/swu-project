@@ -21,3 +21,10 @@ interface DesignerType {
   email: string;
   instagram: string;
 }
+
+interface ProjectType {
+  id: number;
+  name: string;
+  designers: string;
+  category: string;
+}
