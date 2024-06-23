@@ -46,7 +46,7 @@ function ProjectList() {
           >
             <div className="h-[400px] bg-black" />
             <div className="mt-4">{project.name}</div>
-            <div className="mt-1">{project.designers}</div>
+            <div className="mt-1">{project.designers.join(' ')}</div>
           </div>
         ))}
       </div>

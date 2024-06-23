@@ -25,6 +25,7 @@ interface DesignerType {
 interface ProjectType {
   id: number;
   name: string;
-  designers: string;
+  designers: string[];
   category: string;
+  description: string;
 }
