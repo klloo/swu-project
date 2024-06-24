@@ -1,6 +1,4 @@
-import { Canvas } from '@react-three/fiber';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-// import Background from '../components/Backgroud';
 import Ball from '../components/Ball';
 
 function Layout() {
@@ -19,9 +17,10 @@ function Layout() {
       link: '/designer',
     },
   ];
+  const isHome = location.pathname === '/';
   return (
     <>
-      <div className="h-[100vh] overflow-auto">
+      <div className="h-[100vh] overflow-auto bg-[url('/images/pattern.svg')] bg-cover bg-center bg-no-repeat bg-[#BABCBE]">
         <header className="w-full flex justify-between sticky top-0 z-20 pt-5 px-10">
           <Link to="/">
             <div className="flex font-bold">
@@ -48,23 +47,11 @@ function Layout() {
             );
           })}
         </header>
-        <div className="relative z-10 mt-[100px] px-7 pb-32">
+        <div className={!isHome ? 'relative z-10 mt-[100px] px-7 pb-32' : ''}>
           <Outlet />
         </div>
       </div>
       <Ball />
-      <Canvas
-        camera={{ fov: 15, position: [0, 0, 5] }}
-        style={{
-          width: '100vw',
-          height: '100vh',
-          position: 'absolute',
-          top: 0,
-          background: '#BABCBE',
-        }}
-      >
-        {/* <Background /> */}
-      </Canvas>
     </>
   );
 }
