@@ -1,5 +1,4 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import Ball from '../components/Ball';
 
 function Layout() {
   const location = useLocation();
@@ -51,7 +50,6 @@ function Layout() {
           <Outlet />
         </div>
       </div>
-      <Ball />
     </>
   );
 }

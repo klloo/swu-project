@@ -1,66 +1,63 @@
 import { useRef, useState, useEffect } from 'react';
+import { useFrame, useThree } from '@react-three/fiber';
+import * as THREE from 'three';
 
 function Ball() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const ref = useRef<THREE.Mesh>(null);
+  const { viewport } = useThree();
+  const [targetPosition, setTargetPosition] = useState(new THREE.Vector3());
 
   useEffect(() => {
-    let lastAnimationId = 0;
-    let targetX = 0;
-    let targetY = 0;
-
-    const handleMouseMove = (event: MouseEvent) => {
-      targetX = event.clientX;
-      targetY = event.clientY;
+    const handleMouseMove = (event: { clientX: number; clientY: number }) => {
+      const x = (event.clientX / window.innerWidth) * 2 - 1;
+      const y = -(event.clientY / window.innerHeight) * 2 + 1;
+      setTargetPosition(
+        new THREE.Vector3(
+          (x * viewport.width) / 2,
+          (y * viewport.height) / 2,
+          0
+        )
+      );
     };
 
-    const updatePosition = () => {
-      setPosition((prev) => {
-        const newVx = (targetX - prev.x) * 0.1;
-        const newVy = (targetY - prev.y) * 0.1;
-
-        // const nextX = prev.x + newVx;
-        // const nextY = prev.y + newVy;
-        // const screenWidth = window.innerWidth;
-        // const screenHeight = window.innerHeight;
-
-        // if (nextX < 20 || nextX > screenWidth - 20) newVx *= -50;
-        // if (nextY < 20 || nextY > screenHeight - 20) newVy *= -50;
-
-        return {
-          x: prev.x + newVx,
-          y: prev.y + newVy,
-        };
-      });
-
-      lastAnimationId = requestAnimationFrame(updatePosition);
-    };
-
-    lastAnimationId = requestAnimationFrame(updatePosition);
     window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      cancelAnimationFrame(lastAnimationId);
     };
-  }, []); // 의존성 배열을 비워서 컴포넌트 마운트 시에만 useEffect가 실행되도록 함
+  }, [viewport]);
+
+  useFrame(() => {
+    if (ref.current) {
+      ref.current.position.lerp(targetPosition, 0.07);
+      if (Math.abs(ref.current.position.x) > viewport.width / 2 - 0.025) {
+        setTargetPosition(
+          new THREE.Vector3(
+            Math.sign(ref.current.position.x) * (viewport.width * 0.4),
+            ref.current.position.y,
+            0
+          )
+        );
+        ref.current.position.lerp(targetPosition, 0.03);
+      }
+      if (Math.abs(ref.current.position.y) > viewport.height / 2 - 0.025) {
+        setTargetPosition(
+          new THREE.Vector3(
+            ref.current.position.x,
+            Math.sign(ref.current.position.y) * (viewport.height * 0.3),
+            0
+          )
+        );
+        ref.current.position.lerp(targetPosition, 0.03);
+      }
+    }
+  });
 
   return (
-    <div
-      ref={ref}
-      style={{
-        position: 'fixed',
-        left: 0,
-        top: 0,
-        width: '50px',
-        height: '50px',
-        transform: `translate(-50%, -50%) translate(${position.x}px, ${position.y}px)`,
-        background: 'url(/vite.svg) no-repeat center center',
-        backgroundSize: 'cover',
-        zIndex: 100,
-        pointerEvents: 'none',
-      }}
-    />
+    <mesh ref={ref}>
+      <sphereGeometry args={[0.03, 16, 16]} />
+      <meshBasicMaterial color="white" />
+    </mesh>
   );
 }
 
