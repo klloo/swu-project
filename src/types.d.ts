@@ -15,3 +15,17 @@ declare global {
     }
   }
 }
+
+interface DesignerType {
+  name: string;
+  email: string;
+  instagram: string;
+}
+
+interface ProjectType {
+  id: number;
+  name: string;
+  designers: string[];
+  category: string;
+  description: string;
+}
