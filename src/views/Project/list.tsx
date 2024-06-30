@@ -20,15 +20,15 @@ function ProjectList() {
     <div>
       <div className="w-full flex justify-between">
         <div
-          className="cursor-pointer text-[24px] border-[1px] border-black px-4"
+          className="cursor-pointer lg:text-[24px] text-[18px] border-[1px] border-black lg:px-4 px-1 mr-2"
           onClick={() => setFilteredProjects(projects)}
         >
-          All Projects
+          All <span className="hidden lg:inline-block">Projects</span>
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-2">
           {categoryList.map((category) => (
             <div
-              className="cursor-pointer text-[24px] border-[1px] border-black px-4"
+              className="cursor-pointer lg:text-[24px] text-[18px] border-[1px] border-black lg:px-4 px-1"
               key={category}
               onClick={() => onClickCategory(category)}
             >
@@ -37,14 +37,14 @@ function ProjectList() {
           ))}
         </div>
       </div>
-      <div className="mt-4 text-[20px] border-t-[1px] border-black grid grid-cols-4 gap-10">
+      <div className="lg:mt-4 mt-2 lg:text-[20px] text-[14px] border-t-[1px] border-black grid lg:grid-cols-4 grid-cols-2 lg:gap-10 gap-3">
         {filteredProjects.map((project) => (
           <div
-            className="mt-10 cursor-pointer"
+            className="lg:mt-10 mt-7 cursor-pointer"
             key={project.id}
             onClick={() => navigate(`/project/${project.id}`)}
           >
-            <div className="h-[400px] bg-black" />
+            <div className="lg:h-[400px] h-[300px] bg-black" />
             <div className="mt-4">{project.name}</div>
             <div className="mt-1">{project.designers.join(' ')}</div>
           </div>
