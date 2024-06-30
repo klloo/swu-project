@@ -95,7 +95,7 @@ function Designer() {
               </div>
             </div>
             <div
-              className={`lg:w-[250px] w-full lg:h-[170px] ${
+              className={`lg:w-[250px] w-full lg:h-[170px] duration-300 ${
                 showDetail[designer.email] ? 'h-[170px]' : 'h-0'
               } flex lg:gap-2 gap-4 lg:mt-0 mt-4`}
             >
