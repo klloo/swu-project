@@ -2,7 +2,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 
 function MobileHeader() {
   return (
-    <header className="lg:hidden w-full flex justify-end sticky top-0 z-20 pt-7 px-7 cursor-pointer">
+    <header className="lg:hidden w-full flex justify-end sticky top-0 z-20 pt-7 lg:px-7 px-5 cursor-pointer">
       <img src="./images/list.svg" alt="list" />
     </header>
   );
@@ -10,7 +10,7 @@ function MobileHeader() {
 
 function MobileFooter() {
   return (
-    <footer className="lg:hidden text-[11px] px-7 pb-20 absolute bottom-0 w-full">
+    <footer className="lg:hidden text-[11px] lg:px-7 px-5 pb-20 absolute bottom-0 w-full">
       <div className="relative">
         <img src="./images/logo.svg" alt="main-logo" width="380" />
         <div className="mt-4">
@@ -75,7 +75,7 @@ function Layout() {
           <div
             className={
               !isHome
-                ? 'relative z-10 lg:mt-[100px] mt-[50px] px-7 pb-[26rem]'
+                ? 'relative z-10 lg:mt-[100px] mt-[50px] lg:px-7 px-5 pb-[26rem]'
                 : ''
             }
           >
@@ -83,7 +83,7 @@ function Layout() {
           </div>
           {!isHome && (
             <>
-              <footer className="lg:block hidden text-[18px] px-7 pb-20 absolute bottom-0 w-full">
+              <footer className="lg:block hidden text-[18px] lg:px-7 px-5 pb-20 absolute bottom-0 w-full">
                 <div className="relative">
                   <img src="./images/logo.svg" alt="main-logo" width="380" />
                   <div className="mt-4">
