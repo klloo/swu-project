@@ -16,9 +16,13 @@ const committeeList = [
 
 function About() {
   return (
-    <div className="w-full flex items-start gap-10 text-[21px] font-normal leading-[38px] break-keep">
-      <img className="w-1/3" src="/images/main.svg" alt="main-poster" />
-      <div className="w-1/3 border-t-[1px] border-black pt-6">
+    <div className="w-full lg:flex lg:text-[21px] lg:leading-[38px] text-[16px] items-start gap-10 font-normal leading-[30px] break-keep block">
+      <img
+        className="lg:w-1/3 w-full"
+        src="/images/main.svg"
+        alt="main-poster"
+      />
+      <div className="lg:w-1/3 lg:mt-0 lg:border-t-[1px] mt-8 w-full border-t-[1.5px] border-black pt-6">
         <p>
           서울여자대학교
           <br />
@@ -51,7 +55,7 @@ function About() {
           10:00 - 18:00, Last Day 10:00 - 12:00
         </p>
       </div>
-      <div className="w-1/3 border-t-[1px] border-black pt-6">
+      <div className="lg:w-1/3 lg:mt-0 lg:border-t-[1px] mt-8 w-full border-t-[1.5px] border-black pt-6">
         <p>
           만화경은 작은 조각들이 모여 아름다움을 만들어내는 장치이다. 정교하게
           배열된 거울 속 형형색색의 유리구슬, 종이조각들은 빛의 반사와 굴절을
@@ -102,7 +106,11 @@ function About() {
         </div>
         <div className="mt-10">
           <p>후원사</p>
-          <img className="mt-5" src="/images/sponsor.svg" alt="sponsor" />
+          <img
+            className="mt-5 w-40 lg:w-fit"
+            src="/images/sponsor.svg"
+            alt="sponsor"
+          />
         </div>
       </div>
     </div>
