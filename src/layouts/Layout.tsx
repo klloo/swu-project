@@ -1,9 +1,10 @@
+import { useCallback, useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
-function MobileHeader() {
+function MobileHeader({ onClick }: { onClick: () => void }) {
   return (
     <header className="lg:hidden w-full flex justify-end sticky top-0 z-20 pt-7 lg:px-7 px-5 cursor-pointer">
-      <img src="./images/list.svg" alt="list" />
+      <img src="./images/list.svg" alt="list" onClick={onClick} />
     </header>
   );
 }
@@ -48,6 +49,11 @@ function Layout() {
     },
   ];
   const isHome = location.pathname === '/';
+  const [showMenu, setShowMenu] = useState(false);
+  const onClickMobileMenu = useCallback(() => {
+    setShowMenu((prev) => !prev);
+  }, [setShowMenu]);
+
   return (
     <>
       <div className="h-[100vh] w-full overflow-auto bg-[url('/images/pattern.svg')] bg-cover bg-center bg-no-repeat bg-[#BABCBE]">
@@ -71,7 +77,7 @@ function Layout() {
               );
             })}
           </header>
-          <MobileHeader />
+          <MobileHeader onClick={onClickMobileMenu} />
           <div
             className={
               !isHome
@@ -115,6 +121,39 @@ function Layout() {
           )}
         </div>
       </div>
+      {showMenu && (
+        <div
+          className={`w-full h-full bg-black bg-opacity-20 z-50 absolute top-0 left-0`}
+          onClick={() => {
+            setShowMenu(false);
+          }}
+        >
+          <div className="lg:hidden h-full w-1/2 absolute top-0 right-0 bg-white z-50 p-5 pt-10">
+            <Link to="/">
+              <img
+                className="mb-10"
+                src="./images/logo.svg"
+                alt="main-logo"
+                width="270"
+              />
+            </Link>
+            {menuList.map((menu) => {
+              const isActive = location.pathname.includes(menu.link);
+              return (
+                <Link
+                  key={menu.link}
+                  to={menu.link}
+                  className={`text-2xl font-normal block mt-5 ${
+                    isActive ? 'border-b-[1.5px] border-black' : ''
+                  }`}
+                >
+                  {menu.label}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </>
   );
 }
