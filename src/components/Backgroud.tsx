@@ -104,7 +104,7 @@ const WaveShaderMaterial = shaderMaterial(
     void main() {
       vec2 uv = vUv;
     
-      float noise = snoise3(vec3(vUv * uMouse * 1.3, 0));
+      float noise = snoise3(vec3(vUv * uMouse * 1.2, 0.5));
       uv += vec2(noise, noise) * 0.12;
     
       // 텍스처 샘플링
