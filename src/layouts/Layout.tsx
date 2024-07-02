@@ -1,6 +1,5 @@
 import { useCallback, useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-
 function MobileHeader({ onClick }: { onClick: () => void }) {
   return (
     <header className="lg:hidden w-full flex justify-end sticky top-0 z-20 pt-7 lg:px-7 px-5 cursor-pointer">
@@ -56,7 +55,13 @@ function Layout() {
 
   return (
     <>
-      <div className="h-[100vh] w-full overflow-auto bg-[url('/images/pattern.svg')] bg-cover bg-center bg-no-repeat bg-[#BABCBE]">
+      <div
+        className={`h-[100vh] w-full overflow-auto bg-cover bg-center bg-no-repeat bg-[#BABCBE] ${
+          isHome
+            ? 'bg-[url("/images/main-bg.svg")]'
+            : 'bg-[url("/images/pattern.svg")]'
+        }`}
+      >
         <div className="relative min-h-[100vh]">
           <header className="lg:flex hidden w-full justify-between sticky top-0 z-20 pt-7 px-10">
             <Link to="/">

@@ -19,7 +19,7 @@ function About() {
     <div className="w-full lg:flex lg:text-[21px] lg:leading-[38px] text-[16px] items-start gap-10 font-normal leading-[30px] break-keep block">
       <img
         className="lg:w-1/3 w-full"
-        src="/images/main.svg"
+        src="/images/poster.svg"
         alt="main-poster"
       />
       <div className="lg:w-1/3 lg:mt-0 lg:border-t-[1px] mt-8 w-full border-t-[1.5px] border-black pt-6">
