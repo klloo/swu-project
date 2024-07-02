@@ -19,7 +19,6 @@ const WaveShaderMaterial = shaderMaterial(
     }
   `,
   // Fragment Shader
-  // Fragment Shader
   `
     precision mediump float;
     uniform vec2 uMouse;
@@ -103,16 +102,20 @@ const WaveShaderMaterial = shaderMaterial(
     }
 
     void main() {
-        vec2 uv = vUv;
-
-        float noise = snoise3(vec3(vUv * uMouse * 1.5, 0));
-        uv += vec2(noise, noise) * 0.08;
-
-        // 텍스처 샘플링
-        vec3 textureColor = texture2D(uTexture, uv).rgb;
-        gl_FragColor = vec4(textureColor, 1.0);
+      vec2 uv = vUv;
+    
+      float noise = snoise3(vec3(vUv * uMouse * 1.2, 0.5));
+      uv += vec2(noise, noise) * 0.12;
+    
+      // 텍스처 샘플링
+      vec4 textureColor = texture2D(uTexture, uv);
+      
+      // 감마 보정
+      textureColor.rgb = pow(textureColor.rgb, vec3(1.0/2.2));
+      
+      gl_FragColor = textureColor;
     }
-    `
+  `
 );
 
 extend({ WaveShaderMaterial });
@@ -145,7 +148,7 @@ function Background() {
     }
   });
 
-  const [image] = useLoader(THREE.TextureLoader, ['/images/home-bg.jpg']);
+  const [image] = useLoader(THREE.TextureLoader, ['/images/main-graphic.png']);
 
   return (
     <mesh ref={meshRef}>
