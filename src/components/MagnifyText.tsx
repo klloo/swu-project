@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 const pathClassname =
-  'fill-[#bbbdbf] stroke-0 origin-center duration-[1500ms] transform-box-fill-box';
+  'fill-[#bbbdbf] stroke-0 origin-center duration-[1200ms] transform-box-fill-box';
 
 function MagnifyText() {
   const [isHovered, setIsHovered] = useState<Record<number, boolean>>({});

@@ -8,6 +8,7 @@ const WaveShaderMaterial = shaderMaterial(
   {
     uMouse: new THREE.Vector2(0.5, 0.5),
     uTexture: new THREE.Texture(),
+    uTime: 0,
   },
   // Vertex Shader
   `
@@ -23,6 +24,7 @@ const WaveShaderMaterial = shaderMaterial(
     precision mediump float;
     uniform vec2 uMouse;
     uniform sampler2D uTexture;
+    uniform float uTime;
     varying vec2 vUv;
 
     vec3 mod289(vec3 x) {
@@ -103,12 +105,21 @@ const WaveShaderMaterial = shaderMaterial(
 
     void main() {
       vec2 uv = vUv;
-    
-      float noise = snoise3(vec3(vUv * uMouse * 1.2, 0.5));
-      uv += vec2(noise, noise) * 0.12;
-    
+      
+      // 테두리 효과를 위한 가중치 계산
+      float edgeWeight = smoothstep(0.0, 0.3, min(min(uv.x, 1.0 - uv.x), min(uv.y, 1.0 - uv.y)));
+      
+      // 노이즈 계산 (시간 요소 추가 및 속도 감소)
+      float noise = snoise3(vec3(vUv * uMouse * 0.6, sin(uTime * 0.5) * 0.5));
+      
+      // 테두리에 가까울수록 노이즈 효과 감소 (왜곡 강도 감소)
+      vec2 distortion = vec2(noise, noise) * 0.06 * edgeWeight;
+      
+      // 왜곡된 UV 좌표 계산
+      vec2 distortedUV = uv + distortion;
+      
       // 텍스처 샘플링
-      vec4 textureColor = texture2D(uTexture, uv);
+      vec4 textureColor = texture2D(uTexture, distortedUV);
       
       // 감마 보정
       textureColor.rgb = pow(textureColor.rgb, vec3(1.0/2.2));
@@ -141,10 +152,11 @@ function Background() {
     };
   }, []);
 
-  useFrame(() => {
+  useFrame((state) => {
     if (meshRef.current) {
       const material = meshRef.current.material as THREE.ShaderMaterial;
       material.uniforms.uMouse.value.lerp(mouse, 0.05);
+      material.uniforms.uTime.value = state.clock.elapsedTime;
     }
   });
 
