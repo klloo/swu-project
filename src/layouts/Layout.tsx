@@ -65,7 +65,7 @@ function Layout() {
         <div className="relative min-h-[100vh]">
           <header className="lg:flex hidden w-full justify-between sticky top-0 z-20 pt-7 px-10">
             <Link to="/">
-              <img src="./images/logo.svg" alt="main-logo" width="270" />
+              <img src="./images/nav-logo.svg" alt="main-logo" width="270" />
             </Link>
             {menuList.map((menu) => {
               const isActive = location.pathname.includes(menu.link);
@@ -74,7 +74,7 @@ function Layout() {
                   key={menu.link}
                   to={menu.link}
                   className={`text-2xl font-normal ${
-                    isActive ? 'border-b-[1.5px] border-black' : ''
+                    isActive ? 'underline underline-offset-[10px]' : ''
                   }`}
                 >
                   {menu.label}
