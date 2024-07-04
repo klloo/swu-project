@@ -69,7 +69,7 @@ function Designer() {
             key={designer.email}
           >
             <div
-              className="lg:w-[200px] w-full lg:text-[20px] text-[18px] lg:mb-0 mb-4 flex justify-between items-center cursor-pointer"
+              className="lg:w-[200px] w-full lg:text-[20px] text-[18px] lg:mb-0 mb-4 flex justify-between cursor-pointer"
               onClick={() => {
                 setShowDetail((prev) => {
                   const newState = { ...prev };
