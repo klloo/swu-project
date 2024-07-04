@@ -53,7 +53,9 @@ function Designer() {
         <div className="flex gap-2">
           {consonantList.map((consonant) => (
             <div
-              className="cursor-pointer border-[1px] border-black lg:px-2 px-1"
+              className={`cursor-pointer border-[1px] border-black lg:px-2 px-1 ${
+                filter === consonant ? 'bg-black text-[#BABCBE]' : ''
+              }`}
               key={consonant}
               onClick={() => setFilter(consonant)}
             >
