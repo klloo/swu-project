@@ -1,17 +1,18 @@
 const professorList = [
-  { subject: 'Branding', name: '이규락' },
-  { subject: 'Graphic', name: '채병록' },
-  { subject: 'UX/UI', name: '유영재' },
-  { subject: 'Film', name: '최장섭' },
+  { subject: 'Branding', name: ['이규락'] },
+  { subject: 'Graphic', name: ['채병록'] },
+  { subject: 'UX/UI', name: ['유영재'] },
+  { subject: 'Film', name: ['최장섭', '이재원 민병걸'] },
 ];
 const committeeList = [
   { role: '위원장', name: '최희예' },
   { role: '부위원장', name: '유상아' },
-  { role: '그래픽 팀장', name: '김보민' },
-  { role: '웹 팀장', name: '이서연' },
-  { role: '도록 팀장', name: '유상아, 최희예' },
-  { role: '설치 팀장', name: '김다현, 이지은' },
-  { role: '행사 팀장', name: '이유진' },
+  { role: '그래픽팀장', name: '김보민' },
+  { role: '웹팀장', name: '이서연' },
+  { role: '도록팀장', name: '최희예 유상아' },
+  { role: '설치내부팀장', name: '김다현' },
+  { role: '설치외부팀장', name: '이지은(20)' },
+  { role: '행사팀장', name: '이유진' },
 ];
 
 function About() {
@@ -82,36 +83,46 @@ function About() {
           new gaze, find the beauty hidden in it, and reinterpret it. We all
           create endlessly with our own kaleidoscope.
         </p>
-        <div className="mt-10">
+        <div className="mt-14">
           <p>지도교수</p>
           <div className="mt-5">
             {professorList.map((item) => (
               <div className="flex gap-1 mb-2" key={item.subject}>
-                <p className="w-[130px]">{item.subject}</p>
-                <p>{item.name}</p>
+                <p className="w-[150px]">{item.subject}</p>
+                <p>
+                  {item.name.length > 1
+                    ? item.name.map((name) => (
+                        <div className="mb-2">{name} </div>
+                      ))
+                    : item.name[0]}
+                </p>
               </div>
             ))}
           </div>
         </div>
-        <div className="mt-10">
+        <div className="mt-14">
           <p>졸업전시준비위원회</p>
           <div className="mt-5">
             {committeeList.map((item) => (
               <div className="flex gap-1 mb-2" key={item.role}>
-                <p className="w-[130px]">{item.role}</p>
+                <p className="w-[150px]">{item.role}</p>
                 <p>{item.name}</p>
               </div>
             ))}
           </div>
         </div>
-        <div className="mt-10">
-          <p>후원사</p>
-          <img
-            className="mt-5 w-40 lg:w-fit"
-            src="/images/sponsor.svg"
-            alt="sponsor"
-          />
+        <div className="mt-14">
+          <p>협찬</p>
+          <div className="mt-5">
+            <p className="mb-2">윤디자인그룹</p>
+            <p>오늘폰트</p>
+          </div>
         </div>
+        <img
+          className="mt-24 w-40 lg:w-fit"
+          src="/images/swu-logo.svg"
+          alt="swu-logo"
+        />
       </div>
     </div>
   );

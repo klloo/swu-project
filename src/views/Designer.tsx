@@ -53,7 +53,9 @@ function Designer() {
         <div className="flex gap-2">
           {consonantList.map((consonant) => (
             <div
-              className="cursor-pointer border-[1px] border-black lg:px-2 px-1"
+              className={`cursor-pointer border-[1px] border-black lg:px-2 px-1 ${
+                filter === consonant ? 'bg-black text-[#BABCBE]' : ''
+              }`}
               key={consonant}
               onClick={() => setFilter(consonant)}
             >
@@ -69,7 +71,7 @@ function Designer() {
             key={designer.email}
           >
             <div
-              className="lg:w-[200px] w-full lg:text-[20px] text-[18px] lg:mb-0 mb-4 flex justify-between items-center cursor-pointer"
+              className="lg:w-[200px] w-full lg:text-[20px] text-[18px] lg:mb-0 mb-4 flex justify-between cursor-pointer"
               onClick={() => {
                 setShowDetail((prev) => {
                   const newState = { ...prev };
@@ -94,10 +96,20 @@ function Designer() {
                 <div>@{designer.instagram}</div>
               </div>
             </div>
+            <div className={`lg:flex hidden w-[550px] h-[170px] gap-2 mt-0`}>
+              <div className="flex flex-1 gap-4">
+                <div>Project 1</div>
+                <div className="w-1/2 h-full bg-black" />
+              </div>
+              <div className="flex flex-1 gap-4">
+                <div>Project 2</div>
+                <div className="w-1/2 h-full bg-black" />
+              </div>
+            </div>
             <div
-              className={`lg:w-[250px] w-full lg:h-[170px] duration-300 ${
+              className={`lg:hidden w-full duration-300 ${
                 showDetail[designer.email] ? 'h-[170px]' : 'h-0'
-              } flex lg:gap-2 gap-4 lg:mt-0 mt-4`}
+              } flex gap-4 mt-4`}
             >
               <div className="w-1/2 h-full bg-black" />
               <div className="w-1/2 h-full bg-black" />
