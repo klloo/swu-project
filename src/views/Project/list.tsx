@@ -52,7 +52,7 @@ function ProjectList() {
             onClick={() => navigate(`/project/${project.id}`)}
           >
             <div className="lg:h-[400px] h-[300px] bg-black" />
-            <div className="mt-4">{project.name}</div>
+            <div className="mt-4">{project.title}</div>
             <div className="mt-1">{project.designers.join(' ')}</div>
           </div>
         ))}

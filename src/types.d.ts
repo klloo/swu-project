@@ -24,8 +24,9 @@ interface DesignerType {
 
 interface ProjectType {
   id: number;
-  name: string;
+  title: string;
   designers: string[];
   category: string;
   description: string;
+  filmUrl?: string;
 }
