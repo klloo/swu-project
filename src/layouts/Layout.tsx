@@ -48,6 +48,7 @@ function Layout() {
     },
   ];
   const isHome = location.pathname === '/';
+  const isAbout = location.pathname === '/about';
   const [showMenu, setShowMenu] = useState(false);
   const onClickMobileMenu = useCallback(() => {
     setShowMenu((prev) => !prev);
@@ -60,7 +61,7 @@ function Layout() {
           isHome
             ? 'bg-[url("/images/main-bg.svg")]'
             : 'bg-[url("/images/pattern.svg")]'
-        }`}
+        } ${isAbout ? 'lg:overflow-hidden' : ''}`}
       >
         <div className="relative min-h-[100vh]">
           <header className="lg:flex hidden w-full justify-between sticky top-0 z-20 pt-7 px-10">
@@ -85,9 +86,7 @@ function Layout() {
           <MobileHeader onClick={onClickMobileMenu} />
           <div
             className={
-              !isHome
-                ? 'relative z-10 lg:mt-[100px] mt-[50px] lg:px-7 px-5 pb-[26rem]'
-                : ''
+              !isHome ? 'relative z-10 mt-[50px] lg:px-7 px-5 pb-[26rem]' : ''
             }
           >
             <Outlet />

@@ -56,7 +56,7 @@ function About() {
           10:00 - 18:00, Last Day 10:00 - 12:00
         </p>
       </div>
-      <div className="lg:w-1/3 lg:mt-0 lg:border-t-[1px] mt-8 w-full border-t-[1.5px] border-black pt-6">
+      <div className="lg:w-1/3 lg:mt-0 lg:border-t-[1px] mt-8 w-full border-t-[1.5px] border-black pt-6 h-auto lg:pb-20 lg:h-[80vh] lg:overflow-auto">
         <p>
           만화경은 작은 조각들이 모여 아름다움을 만들어내는 장치이다. 정교하게
           배열된 거울 속 형형색색의 유리구슬, 종이조각들은 빛의 반사와 굴절을
@@ -89,13 +89,15 @@ function About() {
             {professorList.map((item) => (
               <div className="flex gap-1 mb-2" key={item.subject}>
                 <p className="w-[150px]">{item.subject}</p>
-                <p>
+                <div>
                   {item.name.length > 1
                     ? item.name.map((name) => (
-                        <div className="mb-2">{name} </div>
+                        <div className="mb-2" key={name}>
+                          {name}
+                        </div>
                       ))
                     : item.name[0]}
-                </p>
+                </div>
               </div>
             ))}
           </div>

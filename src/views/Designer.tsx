@@ -45,7 +45,9 @@ function Designer() {
     <div>
       <div className="w-full flex lg:text-[24px] text-[18px] justify-between overflow-x-auto scrollbar-hide">
         <div
-          className="cursor-pointer border-[1px] border-black pl-4 lg:pr-4 pr-2 mr-2"
+          className={`cursor-pointer border-[1px] border-black pl-4 lg:pr-4 pr-2 mr-2 ${
+            filter === 'all' ? 'bg-black text-[#BABCBE]' : ''
+          }`}
           onClick={() => setFilter('all')}
         >
           All <span className="lg:inline-block hidden">Designers</span>
