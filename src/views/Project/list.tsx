@@ -7,7 +7,7 @@ function ProjectList() {
   const categoryList = ['Branding', 'UX/UI', 'Graphic', 'Film'];
   const [filteredProjects, setFilteredProjects] =
     useState<ProjectType[]>(projects);
-  const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const navigate = useNavigate();
 
@@ -22,7 +22,9 @@ function ProjectList() {
     <div>
       <div className="w-full flex justify-between">
         <div
-          className="cursor-pointer lg:text-[24px] text-[18px] border-[1px] border-black lg:px-4 px-1 mr-2"
+          className={`cursor-pointer lg:text-[24px] text-[18px] border-[1px] border-black lg:px-4 px-1 mr-2 ${
+            selectedCategory === 'all' ? 'bg-black text-[#BABCBE]' : ''
+          }`}
           onClick={() => {
             setFilteredProjects(projects);
             setSelectedCategory('all');
