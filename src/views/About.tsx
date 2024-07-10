@@ -56,7 +56,7 @@ function About() {
           10:00 - 18:00, Last Day 10:00 - 12:00
         </p>
       </div>
-      <div className="lg:w-1/3 lg:mt-0 lg:border-t-[1px] mt-8 w-full border-t-[1.5px] border-black pt-6 h-auto lg:pb-20 lg:h-[80vh] lg:overflow-auto">
+      <div className="lg:w-1/3 lg:mt-0 lg:border-t-[1px] mt-8 w-full border-t-[1.5px] border-black pt-6">
         <p>
           만화경은 작은 조각들이 모여 아름다움을 만들어내는 장치이다. 정교하게
           배열된 거울 속 형형색색의 유리구슬, 종이조각들은 빛의 반사와 굴절을
