@@ -44,8 +44,7 @@ async function getProjects(): Promise<ProjectType[]> {
     const worksheet = workbook.Sheets[sheetName];
 
     const jsonData = XLSX.utils.sheet_to_json(worksheet);
-    const projects = convertToProjects(jsonData);
-    return projects;
+    return convertToProjects(jsonData);
   } catch (error) {
     console.error('projects 파일을 불러오는 중 오류 발생:', error);
     throw error;

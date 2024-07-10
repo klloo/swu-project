@@ -21,7 +21,21 @@ function ProjectDetail() {
           {project.description}
         </div>
       </div>
-      <div className="w-full h-[300vh] lg:mt-12 mt-6 bg-black" />
+      {project.filmUrl && (
+        <iframe
+          src={project.filmUrl}
+          className="w-full lg:mt-12 h-[100vh] mt-6 bg-black"
+        />
+      )}
+      {project.detailImageName && (
+        <img
+          src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/detail/${encodeURIComponent(
+            project.detailImageName
+          )}.png`}
+          alt={project.title}
+          className="w-full lg:mt-12 mt-6 bg-black"
+        />
+      )}
     </>
   );
 }
