@@ -99,7 +99,7 @@ function Designer() {
               </div>
               <div className="flex lg:text-[20px] text-[16px]">
                 <div className="lg:w-[120px] w-[90px] mr-2">Instagram</div>
-                <div>@{designer.instagram}</div>
+                <div>{designer.instagram}</div>
               </div>
             </div>
             <div className={`lg:flex hidden w-[550px] h-[170px] gap-2 mt-0`}>
