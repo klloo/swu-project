@@ -1,8 +1,30 @@
 import { useCallback, useState } from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
-function MobileHeader({ onClick }: { onClick: () => void }) {
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+
+function MobileHeader({
+  onClick,
+  showMenu,
+  setShowMenu,
+}: {
+  onClick: () => void;
+  showMenu: boolean;
+  setShowMenu: (showMenu: boolean) => void;
+}) {
+  const navigate = useNavigate();
   return (
-    <header className="lg:hidden w-full flex justify-end sticky top-0 z-20 pt-7 lg:px-7 px-5 cursor-pointer">
+    <header
+      className={`lg:hidden w-full flex justify-between sticky top-0 z-20 pt-7 lg:px-7 px-5 cursor-pointer ${
+        showMenu ? 'bg-[#BABCBE]' : ''
+      }`}
+    >
+      <img
+        src="./images/fav.svg"
+        alt="list"
+        onClick={() => {
+          setShowMenu(false);
+          navigate('/');
+        }}
+      />
       <img src="./images/list.svg" alt="list" onClick={onClick} />
     </header>
   );
@@ -52,6 +74,7 @@ function Layout() {
   const onClickMobileMenu = useCallback(() => {
     setShowMenu((prev) => !prev);
   }, [setShowMenu]);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -82,7 +105,29 @@ function Layout() {
               );
             })}
           </header>
-          <MobileHeader onClick={onClickMobileMenu} />
+          <MobileHeader
+            onClick={onClickMobileMenu}
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
+          />
+          {showMenu && (
+            <div className="lg:hidden w-full absolute top-15 right-0 bg-[#BABCBE] z-50">
+              {menuList.map((menu) => {
+                return (
+                  <div
+                    key={menu.link}
+                    onClick={() => {
+                      setShowMenu(false);
+                      navigate(menu.link);
+                    }}
+                    className={`text-2xl font-[18px] block px-5 pb-2 mt-5 border-b-[2px] border-black cursor-pointer`}
+                  >
+                    {menu.label}
+                  </div>
+                );
+              })}
+            </div>
+          )}
           <div
             className={
               !isHome ? 'relative z-10 mt-[50px] lg:px-7 px-5 pb-[26rem]' : ''
@@ -124,39 +169,6 @@ function Layout() {
           )}
         </div>
       </div>
-      {showMenu && (
-        <div
-          className={`w-full h-full bg-black bg-opacity-20 z-50 absolute top-0 left-0`}
-          onClick={() => {
-            setShowMenu(false);
-          }}
-        >
-          <div className="lg:hidden h-full w-1/2 absolute top-0 right-0 bg-white z-50 p-5 pt-10">
-            <Link to="/">
-              <img
-                className="mb-10"
-                src="./images/logo.svg"
-                alt="main-logo"
-                width="270"
-              />
-            </Link>
-            {menuList.map((menu) => {
-              const isActive = location.pathname.includes(menu.link);
-              return (
-                <Link
-                  key={menu.link}
-                  to={menu.link}
-                  className={`text-2xl font-normal block mt-5 ${
-                    isActive ? 'border-b-[1.5px] border-black' : ''
-                  }`}
-                >
-                  {menu.label}
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      )}
     </>
   );
 }
