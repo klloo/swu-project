@@ -65,17 +65,15 @@ function ProjectList() {
             key={project.id}
             onClick={() => navigate(`/project/${project.id}`)}
           >
-            <div className="w-full h-[88.5%]">
-              <div className="w-full h-full">
-                <img
-                  src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${project.thumbnailImageName}.png`}
-                  alt={project.title}
-                  className="w-full"
-                />
-              </div>
-              <div className="mt-4">{project.title}</div>
-              <div className="mt-1">{project.designers.join(' ')}</div>
+            <div className="w-full">
+              <img
+                src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${project.thumbnailImageName}.png`}
+                alt={project.title}
+                className="w-full"
+              />
             </div>
+            <div className="mt-4">{project.title}</div>
+            <div className="mt-1">{project.designers.join(' ')}</div>
           </div>
         ))}
       </div>
