@@ -29,4 +29,6 @@ interface ProjectType {
   category: string;
   description: string;
   filmUrl?: string;
+  detailImageName?: string;
+  thumbnailImageName: string;
 }

@@ -25,8 +25,11 @@ function convertToProjects(jsonData: any[]): ProjectType[] {
     id: index + 1,
     title: row['작품명'],
     designers: row['이름'].split(',').map((name: string) => name.trim()),
-    category: getCategory(row['작품 분야']),
-    description: '',
+    category: getCategory(row['분야']),
+    description: row['작품 소개'],
+    thumbnailImageName: row['썸네일'],
+    detailImageName: row['디테일'],
+    filmUrl: row['영상 URL 제출'],
   }));
 }
 
