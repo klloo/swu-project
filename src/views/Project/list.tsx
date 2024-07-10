@@ -56,7 +56,7 @@ function ProjectList() {
             <img
               src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${project.thumbnailImageName}.png`}
               alt={project.title}
-              className="lg:h-[400px] h-[300px]"
+              className="w-full"
             />
             <div className="mt-4">{project.title}</div>
             <div className="mt-1">{project.designers.join(' ')}</div>
