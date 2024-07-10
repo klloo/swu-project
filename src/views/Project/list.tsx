@@ -1,22 +1,36 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import projectData from '../../data/projects';
 import type { ProjectType } from '../../types';
-import { useNavigate } from 'react-router-dom';
 
 function ProjectList() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+
   const projects = useMemo(() => projectData, []);
   const categoryList = ['Branding', 'UX/UI', 'Graphic', 'Film'];
   const [filteredProjects, setFilteredProjects] =
     useState<ProjectType[]>(projects);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    const category = searchParams.get('cat') || 'all';
+    setSelectedCategory(category);
+    if (category === 'all') {
+      setFilteredProjects(projects);
+    } else {
+      setFilteredProjects(
+        projects.filter((project) => project.category === category)
+      );
+    }
+  }, [searchParams, projects]);
 
   const onClickCategory = (category: string) => {
-    setFilteredProjects(
-      projects.filter((project) => project.category === category)
-    );
-    setSelectedCategory(category);
+    if (category === 'all') {
+      setSearchParams({});
+    } else {
+      setSearchParams({ cat: category });
+    }
   };
 
   return (
@@ -26,10 +40,7 @@ function ProjectList() {
           className={`cursor-pointer lg:text-[24px] text-[18px] border-[1px] border-black lg:px-4 px-1 mr-2 ${
             selectedCategory === 'all' ? 'bg-black text-[#BABCBE]' : ''
           }`}
-          onClick={() => {
-            setFilteredProjects(projects);
-            setSelectedCategory('all');
-          }}
+          onClick={() => onClickCategory('all')}
         >
           All <span className="hidden lg:inline-block">Projects</span>
         </div>

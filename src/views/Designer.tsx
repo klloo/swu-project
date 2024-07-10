@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import designers from '../data/designers';
 import type { DesignerType } from '../types';
 import { getInitialConsonant } from '../utils';
@@ -21,9 +22,10 @@ const consonantList = [
 ];
 
 function Designer() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [filteredDesigners, setFilteredDesigners] = useState(designers);
   const [filter, setFilter] = useState<'all' | (typeof consonantList)[number]>(
-    'all'
+    searchParams.get('cat') || 'all'
   );
   const [showDetail, setShowDetail] = useState<{ [key: string]: boolean }>(
     () => ({})
@@ -32,14 +34,16 @@ function Designer() {
   useEffect(() => {
     if (filter === 'all') {
       setFilteredDesigners(designers);
+      setSearchParams({}); // 'all'일 때 쿼리 파라미터 제거
     } else {
       setFilteredDesigners(
         designers.filter(
           (designer) => getInitialConsonant(designer.name) === filter
         )
       );
+      setSearchParams({ cat: filter }); // 'all'이 아닐 때만 쿼리 파라미터 설정
     }
-  }, [filter]);
+  }, [filter, setSearchParams]);
 
   return (
     <div>
