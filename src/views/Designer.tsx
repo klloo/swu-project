@@ -73,7 +73,7 @@ function Designer() {
       <div className="mt-4">
         {filteredDesigners.map((designer: DesignerType) => (
           <div
-            className="border-t-[1px] border-black w-full lg:flex gap-2 py-6"
+            className="border-t-[1px] border-black w-full lg:flex gap-2 py-6 pb-10"
             key={designer.email}
           >
             <div
