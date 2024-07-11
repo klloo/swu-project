@@ -17,9 +17,11 @@ function ProjectDetail() {
             <div key={designer}>{designer}</div>
           ))}
         </div>
-        <div className="pt-4 lg:pb-0 pb-4 lg:w-1/2 w-full border-t-[1px] lg:text-[21px] text-[16px] border-black">
-          {project.description}
-        </div>
+        {project.description && (
+          <div className="pt-4 lg:pb-0 pb-4 lg:w-1/4 w-full border-t-[1px] border-black">
+            {project.description}
+          </div>
+        )}
       </div>
       {project.filmUrl && (
         <iframe
