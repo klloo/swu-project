@@ -111,7 +111,7 @@ function Layout() {
             setShowMenu={setShowMenu}
           />
           {showMenu && (
-            <div className="lg:hidden w-full absolute top-15 right-0 bg-[#BABCBE] z-50">
+            <div className="lg:hidden w-full fixed top-15 right-0 bg-[#BABCBE] z-50">
               {menuList.map((menu) => {
                 return (
                   <div
