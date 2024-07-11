@@ -101,7 +101,7 @@ function Layout() {
           <div className="relative min-h-[100vh]">
             <header className="lg:flex hidden w-full justify-between sticky top-0 z-20 pt-7 px-10">
               <Link to="/">
-                <img src="./images/nav-logo.svg" alt="main-logo" width="270" />
+                <img src="./images/nav-logo.svg" alt="main-logo" />
               </Link>
               {menuList.map((menu) => {
                 const isActive = location.pathname.includes(menu.link);
