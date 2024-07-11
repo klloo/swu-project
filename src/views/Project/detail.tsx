@@ -8,7 +8,7 @@ function ProjectDetail() {
   if (!project) return null;
   return (
     <>
-      <div className="w-full lg:flex block items-start gap-10 lg:text-[24px] text-[18px] font-normal lg:leading-[38px] leading-[30px] break-keep">
+      <div className="w-full lg:flex block items-start gap-10 lg:text-[20px] text-[14px] font-normal lg:leading-[38px] leading-[30px] break-keep">
         <div className="pt-4 lg:pb-0 pb-4 lg:w-1/4 w-full border-t-[1px] border-black">
           {project.title}
         </div>

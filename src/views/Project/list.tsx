@@ -1,7 +1,6 @@
 import { useMemo, useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import projectData from '../../data/projects';
-import type { ProjectType } from '../../types';
 
 function ProjectList() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -9,21 +8,21 @@ function ProjectList() {
 
   const projects = useMemo(() => projectData, []);
   const categoryList = ['Branding', 'UX/UI', 'Graphic', 'Film'];
-  const [filteredProjects, setFilteredProjects] =
-    useState<ProjectType[]>(projects);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+
+  const sortedFilteredProjects = useMemo(() => {
+    const filtered =
+      selectedCategory === 'all'
+        ? projects
+        : projects.filter((project) => project.category === selectedCategory);
+
+    return filtered.sort((a, b) => a.title.localeCompare(b.title));
+  }, [projects, selectedCategory]);
 
   useEffect(() => {
     const category = searchParams.get('cat') || 'all';
     setSelectedCategory(category);
-    if (category === 'all') {
-      setFilteredProjects(projects);
-    } else {
-      setFilteredProjects(
-        projects.filter((project) => project.category === category)
-      );
-    }
-  }, [searchParams, projects]);
+  }, [searchParams]);
 
   const onClickCategory = (category: string) => {
     if (category === 'all') {
@@ -59,7 +58,7 @@ function ProjectList() {
         </div>
       </div>
       <div className="lg:mt-4 mt-2 lg:text-[20px] text-[14px] border-t-[1px] border-black grid lg:grid-cols-4 grid-cols-2 lg:gap-10 gap-3">
-        {filteredProjects.map((project) => (
+        {sortedFilteredProjects.map((project) => (
           <div
             className="lg:mt-10 mt-7 cursor-pointer"
             key={project.id}
