@@ -133,32 +133,32 @@ extend({ WaveShaderMaterial });
 function Background() {
   const meshRef = useRef<THREE.Mesh>(null);
   const { viewport } = useThree();
-  const [mouse, setMouse] = useState(new THREE.Vector2(0.5, 0.5));
+  // const [mouse, setMouse] = useState(new THREE.Vector2(0.5, 0.5));
 
-  useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      setMouse(
-        new THREE.Vector2(
-          (event.clientX / window.innerWidth) * 2 - 1,
-          -(event.clientY / window.innerHeight) * 2 + 1
-        )
-      );
-    };
+  // useEffect(() => {
+  //   const handleMouseMove = (event: MouseEvent) => {
+  //     setMouse(
+  //       new THREE.Vector2(
+  //         (event.clientX / window.innerWidth) * 2 - 1,
+  //         -(event.clientY / window.innerHeight) * 2 + 1
+  //       )
+  //     );
+  //   };
 
-    window.addEventListener('mousemove', handleMouseMove);
+  //   window.addEventListener('mousemove', handleMouseMove);
 
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('mousemove', handleMouseMove);
+  //   };
+  // }, []);
 
-  useFrame((state) => {
-    if (meshRef.current) {
-      const material = meshRef.current.material as THREE.ShaderMaterial;
-      material.uniforms.uMouse.value.lerp(mouse, 0.05);
-      material.uniforms.uTime.value = state.clock.elapsedTime;
-    }
-  });
+  // useFrame((state) => {
+  //   if (meshRef.current) {
+  //     const material = meshRef.current.material as THREE.ShaderMaterial;
+  //     material.uniforms.uMouse.value.lerp(mouse, 0.05);
+  //     material.uniforms.uTime.value = state.clock.elapsedTime;
+  //   }
+  // });
 
   const [image] = useLoader(THREE.TextureLoader, ['/images/main-graphic.png']);
 
