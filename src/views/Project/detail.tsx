@@ -18,7 +18,7 @@ function ProjectDetail() {
           ))}
         </div>
         {project.description && (
-          <div className="pt-4 lg:pb-0 pb-4 lg:w-1/4 w-full border-t-[1px] border-black">
+          <div className="pt-4 lg:pb-0 pb-4 lg:w-1/2 w-full border-t-[1px] border-black">
             {project.description}
           </div>
         )}
