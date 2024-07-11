@@ -105,7 +105,7 @@ function Designer() {
             <div className={`lg:flex hidden w-[550px] h-[170px] gap-2 mt-0`}>
               <div className="flex flex-1 gap-4">
                 <div>Project 1</div>
-                <div className="w-1/2 h-full bg-black">
+                <div className="w-1/2 h-full">
                   <img
                     src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project1}.png`}
                     alt={`${designer.name}-project1`}
@@ -117,7 +117,7 @@ function Designer() {
                 {designer.project2 && (
                   <>
                     <div>Project 2</div>
-                    <div className="w-1/2 h-full bg-black">
+                    <div className="w-1/2 h-full">
                       <img
                         src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project2}.png`}
                         alt={`${designer.name}-project2`}
