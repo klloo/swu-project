@@ -114,14 +114,18 @@ function Designer() {
                 </div>
               </div>
               <div className="flex flex-1 gap-4">
-                <div>Project 2</div>
-                <div className="w-1/2 h-full bg-black">
-                  <img
-                    src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project2}.png`}
-                    alt={`${designer.name}-project2`}
-                    className="w-full"
-                  />
-                </div>
+                {designer.project2 && (
+                  <>
+                    <div>Project 2</div>
+                    <div className="w-1/2 h-full bg-black">
+                      <img
+                        src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project2}.png`}
+                        alt={`${designer.name}-project2`}
+                        className="w-full"
+                      />
+                    </div>
+                  </>
+                )}
               </div>
             </div>
             <div
@@ -137,11 +141,13 @@ function Designer() {
                 />
               </div>
               <div className="w-1/2 h-full transform transition-transform duration-300 ease-in-out">
-                <img
-                  src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project2}.png`}
-                  alt={`${designer.name}-project2`}
-                  className={`w-full transition-transform duration-300 ease-in-out`}
-                />
+                {designer.project2 && (
+                  <img
+                    src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project2}.png`}
+                    alt={`${designer.name}-project2`}
+                    className={`w-full transition-transform duration-300 ease-in-out`}
+                  />
+                )}
               </div>
             </div>
           </div>
