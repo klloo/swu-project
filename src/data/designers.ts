@@ -11,6 +11,8 @@ function convertToProjects(jsonData: any[]): DesignerType[] {
     name: row['국문 이름'],
     email: row['웹 및 도록 기재용 이메일 주소'],
     instagram: row['인스타그램 아이디'],
+    project1: row['project1'],
+    project2: row['project2'],
   }));
 }
 

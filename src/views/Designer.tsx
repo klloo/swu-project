@@ -105,20 +105,44 @@ function Designer() {
             <div className={`lg:flex hidden w-[550px] h-[170px] gap-2 mt-0`}>
               <div className="flex flex-1 gap-4">
                 <div>Project 1</div>
-                <div className="w-1/2 h-full bg-black" />
+                <div className="w-1/2 h-full bg-black">
+                  <img
+                    src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project1}.png`}
+                    alt={`${designer.name}-project1`}
+                    className="w-full"
+                  />
+                </div>
               </div>
               <div className="flex flex-1 gap-4">
                 <div>Project 2</div>
-                <div className="w-1/2 h-full bg-black" />
+                <div className="w-1/2 h-full bg-black">
+                  <img
+                    src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project2}.png`}
+                    alt={`${designer.name}-project2`}
+                    className="w-full"
+                  />
+                </div>
               </div>
             </div>
             <div
-              className={`lg:hidden w-full duration-300 ${
-                showDetail[designer.email] ? 'h-[170px]' : 'h-0'
+              className={`lg:hidden w-full overflow-hidden transition-all duration-300 ease-in-out ${
+                showDetail[designer.email] ? 'max-h-[500px]' : 'max-h-0'
               } flex gap-4 mt-4`}
             >
-              <div className="w-1/2 h-full bg-black" />
-              <div className="w-1/2 h-full bg-black" />
+              <div className="w-1/2 h-full transform transition-transform duration-300 ease-in-out">
+                <img
+                  src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project1}.png`}
+                  alt={`${designer.name}-project1`}
+                  className={`w-full transition-transform duration-300 ease-in-out`}
+                />
+              </div>
+              <div className="w-1/2 h-full transform transition-transform duration-300 ease-in-out">
+                <img
+                  src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project2}.png`}
+                  alt={`${designer.name}-project2`}
+                  className={`w-full transition-transform duration-300 ease-in-out`}
+                />
+              </div>
             </div>
           </div>
         ))}
