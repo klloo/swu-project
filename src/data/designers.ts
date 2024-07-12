@@ -6,14 +6,23 @@ const excelFilePath = '/data/designer_list.xlsx';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function convertToProjects(jsonData: any[]): DesignerType[] {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return jsonData.map((row: any, index: number) => ({
-    id: index + 1,
-    name: row['국문 이름'],
-    email: row['웹 및 도록 기재용 이메일 주소'],
-    instagram: row['인스타그램 아이디'],
-    project1: row['project1'],
-    project2: row['project2'],
-  }));
+  return jsonData.map((row: any) => {
+    const designer: DesignerType = {
+      name: row['국문 이름'],
+      email: row['웹 및 도록 기재용 이메일 주소'],
+      instagram: row['인스타그램 아이디'],
+      project1: { thumbnail: row['project1'], name: row['프로젝트 이름1'] },
+    };
+
+    if (row['project2']) {
+      designer.project2 = {
+        thumbnail: row['project2'],
+        name: row['프로젝트 이름2'],
+      };
+    }
+
+    return designer;
+  });
 }
 
 async function getDesigners(): Promise<DesignerType[]> {

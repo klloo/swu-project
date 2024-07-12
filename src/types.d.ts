@@ -20,8 +20,8 @@ interface DesignerType {
   name: string;
   email: string;
   instagram: string;
-  project1: string;
-  project2?: string;
+  project1: { thumbnail: string; name: string };
+  project2?: { thumbnail: string; name: string };
 }
 
 interface ProjectType {

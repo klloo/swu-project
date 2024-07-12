@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import designers from '../data/designers';
+import projects from '../data/projects';
 import type { DesignerType } from '../types';
-import { getInitialConsonant } from '../utils';
+import { getCategoryKr, getInitialConsonant } from '../utils';
 
 const consonantList = [
   'ㄱ',
@@ -44,6 +45,18 @@ function Designer() {
       setSearchParams({ cat: filter }); // 'all'이 아닐 때만 쿼리 파라미터 설정
     }
   }, [filter, setSearchParams]);
+
+  const navigate = useNavigate();
+  const onClickProject = (projectName: string) => {
+    const project = projects.find((project) => {
+      return (
+        `${getCategoryKr(project.category)}_${project.title}` === projectName
+      );
+    });
+    if (project) {
+      navigate(`/project/${project.id}`);
+    }
+  };
 
   return (
     <div>
@@ -105,11 +118,12 @@ function Designer() {
             <div className={`lg:flex hidden w-[550px] h-[170px] gap-2 mt-0`}>
               <div className="flex flex-1 gap-4">
                 <div>Project 1</div>
-                <div className="w-1/2 h-full">
+                <div className="w-1/2 h-full cursor-pointer">
                   <img
-                    src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project1}.png`}
+                    src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project1.thumbnail}.png`}
                     alt={`${designer.name}-project1`}
                     className="w-full"
+                    onClick={() => onClickProject(designer.project1?.name)}
                   />
                 </div>
               </div>
@@ -117,11 +131,12 @@ function Designer() {
                 {designer.project2 && (
                   <>
                     <div>Project 2</div>
-                    <div className="w-1/2 h-full">
+                    <div className="w-1/2 h-full cursor-pointer">
                       <img
-                        src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project2}.png`}
+                        src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project2.thumbnail}.png`}
                         alt={`${designer.name}-project2`}
                         className="w-full"
+                        onClick={() => onClickProject(designer.project2.name)}
                       />
                     </div>
                   </>

@@ -41,3 +41,33 @@ export function getInitialConsonant(name: string) {
   const index = Math.floor(charCode / CHO_PERIOD);
   return CHO_HANGUL[index];
 }
+
+export const getCategoryEn = (category: string) => {
+  switch (category) {
+    case '브랜딩':
+      return 'Branding';
+    case 'UXUI':
+      return 'UX/UI';
+    case '그래픽':
+      return 'Graphic';
+    case '영상':
+      return 'Film';
+    default:
+      return '';
+  }
+};
+
+export const getCategoryKr = (category: string) => {
+  switch (category) {
+    case 'Branding':
+      return '브랜딩';
+    case 'UX/UI':
+      return 'UXUI';
+    case 'Graphic':
+      return '그래픽';
+    case 'Film':
+      return '영상';
+    default:
+      return '';
+  }
+};

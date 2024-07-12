@@ -1,23 +1,8 @@
 import * as XLSX from 'xlsx';
 import type { ProjectType } from '../types';
+import { getCategoryEn } from '../utils';
 
 const excelFilePath = '/data/project_list.xlsx';
-
-const getCategory = (category: string) => {
-  switch (category) {
-    case '브랜딩':
-      return 'Branding';
-    case 'UXUI':
-      return 'UX/UI';
-    case '그래픽':
-      return 'Graphic';
-    case '영상':
-      return 'Film';
-    default:
-      return '';
-  }
-};
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function convertToProjects(jsonData: any[]): ProjectType[] {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -25,7 +10,7 @@ function convertToProjects(jsonData: any[]): ProjectType[] {
     id: index + 1,
     title: row['작품명'],
     designers: row['이름'].split(',').map((name: string) => name.trim()),
-    category: getCategory(row['분야']),
+    category: getCategoryEn(row['분야']),
     description: row['작품 소개'],
     thumbnailImageName: row['썸네일'],
     detailImageName: row['디테일'],
