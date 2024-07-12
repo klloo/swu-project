@@ -136,7 +136,9 @@ function Designer() {
                         src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project2.thumbnail}.png`}
                         alt={`${designer.name}-project2`}
                         className="w-full"
-                        onClick={() => onClickProject(designer.project2.name)}
+                        onClick={() =>
+                          onClickProject(designer.project2?.name ?? '')
+                        }
                       />
                     </div>
                   </>
