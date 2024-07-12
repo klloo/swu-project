@@ -1,6 +1,6 @@
 import { shaderMaterial } from '@react-three/drei';
-import { extend, useFrame, useLoader, useThree } from '@react-three/fiber';
-import { useEffect, useRef, useState } from 'react';
+import { extend, useLoader, useThree } from '@react-three/fiber';
+import { useRef } from 'react';
 import * as THREE from 'three';
 
 const WaveShaderMaterial = shaderMaterial(
