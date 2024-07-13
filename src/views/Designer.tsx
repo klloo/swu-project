@@ -155,7 +155,7 @@ function Designer() {
                   src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project1.thumbnail}.png`}
                   alt={`${designer.name}-project1`}
                   className={`w-full transition-transform duration-300 ease-in-out`}
-                  onClick={() => onClickProject(designer.project2?.name ?? '')}
+                  onClick={() => onClickProject(designer.project1.name ?? '')}
                 />
               </div>
               <div className="w-1/2 h-full transform transition-transform duration-300 ease-in-out">
