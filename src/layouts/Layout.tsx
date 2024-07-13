@@ -151,7 +151,7 @@ function Layout() {
               id="content"
               className={
                 !isHome
-                  ? `relative z-10 mt-[50px] lg:px-7 px-5 pb-[35rem] ${
+                  ? `relative z-10 mt-[50px] lg:px-7 px-5 lg:pb-[35rem] pb-[20rem] ${
                       showMenu && 'pt-[60px]'
                     }`
                   : ''
