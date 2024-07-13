@@ -26,7 +26,7 @@ function ProjectDetail() {
       {project.filmUrl && (
         <iframe
           src={project.filmUrl}
-          className="w-full lg:mt-12 h-[100vh] mt-6 bg-black"
+          className="w-full lg:mt-12 lg:h-[100vh] h-[20rem] mt-6 bg-black"
         />
       )}
       {project.detailImageName && (
