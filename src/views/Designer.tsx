@@ -101,7 +101,7 @@ function Designer() {
             >
               <div>{designer.name}</div>
               <img
-                src="./images/caret-down-light.svg"
+                src="https://www.swuvd2024.com/images/caret-down-light.svg"
                 className="w-7 lg:hidden"
               />
             </div>

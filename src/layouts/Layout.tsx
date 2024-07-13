@@ -18,14 +18,18 @@ function MobileHeader({
       }`}
     >
       <img
-        src="./images/fav.svg"
+        src="https://www.swuvd2024.com/images/fav.svg"
         alt="list"
         onClick={() => {
           setShowMenu(false);
           navigate('/');
         }}
       />
-      <img src="./images/list.svg" alt="list" onClick={onClick} />
+      <img
+        src="https://www.swuvd2024.com/images/list.svg"
+        alt="list"
+        onClick={onClick}
+      />
     </header>
   );
 }
@@ -34,7 +38,11 @@ function MobileFooter() {
   return (
     <footer className="lg:hidden text-[11px] lg:px-7 px-5 pb-20 absolute bottom-0 w-full">
       <div className="relative">
-        <img src="./images/logo.svg" alt="main-logo" width="220" />
+        <img
+          src="https://www.swuvd2024.com/images/logo.svg"
+          alt="main-logo"
+          width="220"
+        />
         <div className="mt-4">
           2024 © Seoul Women’s University Visual Communication Design.
           <br />
@@ -45,7 +53,7 @@ function MobileFooter() {
         </div>
       </div>
       <img
-        src="./images/swu-logo.svg"
+        src="https://www.swuvd2024.com/images/swu-logo.svg"
         alt="swu-logo"
         className="lg:hidden absolute bottom-5 right-7 w-28"
       />
@@ -101,7 +109,10 @@ function Layout() {
           <div className="relative min-h-[100vh]">
             <header className="lg:flex hidden w-full justify-between sticky top-0 z-20 pt-7 px-10">
               <Link to="/">
-                <img src="./images/nav-logo.svg" alt="main-logo" />
+                <img
+                  src="https://www.swuvd2024.com/images/nav-logo.svg"
+                  alt="main-logo"
+                />
               </Link>
               {menuList.map((menu) => {
                 const isActive = location.pathname.includes(menu.link);
@@ -163,7 +174,11 @@ function Layout() {
               <>
                 <footer className="lg:block hidden text-[18px] lg:px-7 px-5 pb-20 absolute bottom-0 w-full">
                   <div className="relative">
-                    <img src="./images/logo.svg" alt="main-logo" width="320" />
+                    <img
+                      src="https://www.swuvd2024.com/images/logo.svg"
+                      alt="main-logo"
+                      width="320"
+                    />
                     <div className="mt-4">
                       2024 © Seoul Women’s University Visual Communication
                       Design. All Rights Reserved.
@@ -182,7 +197,7 @@ function Layout() {
                       </div>
                     </div>
                     <img
-                      src="./images/swu-logo.svg"
+                      src="https://www.swuvd2024.com/images/swu-logo.svg"
                       alt="swu-logo"
                       className="absolute bottom-0 right-0"
                     />
