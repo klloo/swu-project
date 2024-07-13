@@ -118,12 +118,7 @@ function Layout() {
                 );
               })}
             </header>
-            <MobileHeader
-              onClick={onClickMobileMenu}
-              showMenu={showMenu}
-              setShowMenu={setShowMenu}
-            />
-            {showMenu && (
+            {showMenu ? (
               <div className="lg:hidden w-full fixed top-0 right-0 bg-[#BABCBE] z-50">
                 <MobileHeader
                   onClick={onClickMobileMenu}
@@ -145,11 +140,21 @@ function Layout() {
                   );
                 })}
               </div>
+            ) : (
+              <MobileHeader
+                onClick={onClickMobileMenu}
+                showMenu={showMenu}
+                setShowMenu={setShowMenu}
+              />
             )}
             <div
               id="content"
               className={
-                !isHome ? 'relative z-10 mt-[50px] lg:px-7 px-5 pb-[35rem]' : ''
+                !isHome
+                  ? `relative z-10 mt-[50px] lg:px-7 px-5 pb-[35rem] ${
+                      showMenu && 'pt-[60px]'
+                    }`
+                  : ''
               }
             >
               <Outlet />
