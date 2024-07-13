@@ -124,7 +124,12 @@ function Layout() {
               setShowMenu={setShowMenu}
             />
             {showMenu && (
-              <div className="lg:hidden w-full fixed top-15 right-0 bg-[#BABCBE] z-50">
+              <div className="lg:hidden w-full fixed top-0 right-0 bg-[#BABCBE] z-50">
+                <MobileHeader
+                  onClick={onClickMobileMenu}
+                  showMenu={showMenu}
+                  setShowMenu={setShowMenu}
+                />
                 {menuList.map((menu) => {
                   return (
                     <div
