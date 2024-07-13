@@ -34,7 +34,7 @@ function MobileFooter() {
   return (
     <footer className="lg:hidden text-[11px] lg:px-7 px-5 pb-20 absolute bottom-0 w-full">
       <div className="relative">
-        <img src="./images/logo.svg" alt="main-logo" width="380" />
+        <img src="./images/logo.svg" alt="main-logo" width="220" />
         <div className="mt-4">
           2024 © Seoul Women’s University Visual Communication Design.
           <br />
@@ -144,7 +144,7 @@ function Layout() {
             <div
               id="content"
               className={
-                !isHome ? 'relative z-10 mt-[50px] lg:px-7 px-5 pb-[45rem]' : ''
+                !isHome ? 'relative z-10 mt-[50px] lg:px-7 px-5 pb-[35rem]' : ''
               }
             >
               <Outlet />
