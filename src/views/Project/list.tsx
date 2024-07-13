@@ -69,6 +69,7 @@ function ProjectList() {
                 src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${project.thumbnailImageName}.png`}
                 alt={project.title}
                 className="w-full"
+                loading="lazy"
               />
             </div>
             <div className="mt-4">{project.title}</div>
