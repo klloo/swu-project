@@ -152,17 +152,21 @@ function Designer() {
             >
               <div className="w-1/2 h-full transform transition-transform duration-300 ease-in-out">
                 <img
-                  src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project1}.png`}
+                  src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project1.thumbnail}.png`}
                   alt={`${designer.name}-project1`}
                   className={`w-full transition-transform duration-300 ease-in-out`}
+                  onClick={() => onClickProject(designer.project2?.name ?? '')}
                 />
               </div>
               <div className="w-1/2 h-full transform transition-transform duration-300 ease-in-out">
                 {designer.project2 && (
                   <img
-                    src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project2}.png`}
+                    src={`https://swu-bucket.s3.ap-northeast-2.amazonaws.com/projects/thumbnail/${designer.project2.thumbnail}.png`}
                     alt={`${designer.name}-project2`}
                     className={`w-full transition-transform duration-300 ease-in-out`}
+                    onClick={() =>
+                      onClickProject(designer.project2?.name ?? '')
+                    }
                   />
                 )}
               </div>
