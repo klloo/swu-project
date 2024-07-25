@@ -35,7 +35,7 @@ function ProjectList() {
 
   return (
     <div>
-      <div className="w-full flex justify-between">
+      <div className="w-full flex justify-between overflow-x-auto scrollbar-hide">
         <div className="flex gap-2 mr-2">
           <div
             className={`cursor-pointer lg:text-[24px] text-[18px] border-[1px] border-black lg:px-4 px-1 ${
